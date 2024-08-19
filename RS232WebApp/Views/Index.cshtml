@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model RS232WebApp.Models.ChatViewModel
+
+<h2>Mesajlaşma</h2>
+
+<div id="chat-container">
+    <div id="messages">
+        @foreach (var message in Model.Messages)
+        {
+            <div class="message @(message.IsSentByUser ? "sent" : "received")">
+                <p>@message.Content</p>
+            </div>
+        }
+    </div>
+    <form id="message-form">
+        <input type="text" id="message-input" name="Message" />
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+
+<style>
+    #chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        border: 1px solid #ccc;
+    }
+
+    #messages {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .message {
+        padding: 5px;
+    }
+
+    .sent {
+        text-align: right;
+    }
+
+    .received {
+        text-align: left;
+    }
+</style>
